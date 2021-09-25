@@ -18,11 +18,11 @@ section{
     width: 70rem;
     display: flex;
     justify-content: space-between;
-    
 }
 .comment{
     border: 1px solid #ada6a6;
     padding: 30px 20px;
+    cursor: pointer;
 }
 .fullcomment{
     height: 10rem;

@@ -7,7 +7,8 @@ import axios from "axios"
 
 const HttpApp = () => {
   const[comments,setComments]=useState(null)
-
+  const[selectedId,setSelectedId]=useState(null)
+  
   useEffect(()=>{
     axios.get("https://jsonplaceholder.typicode.com/comments").then((response)=>{
       setComments(response.data.slice(0,4))
@@ -16,21 +17,30 @@ const HttpApp = () => {
     })
     
   },[])
-  console.log(comments);
+  //console.log(comments);
+  const showComment=(id)=>{
+    setSelectedId(id)
+    
+  }
+
   return (
     <div>
       <section className="commentSection">
         {comments ? comments.map((comment)=>
           <Comment 
+          id={comment.id}
           key={comment.id}
           name={comment.name}
           email={comment.email}
           body={comment.body}
+          showComment={()=>showComment(comment.id)}
           />
         ): <p>loading....</p>}
       </section>
       <section>
-          <FullComment />
+         <FullComment
+            selectedId={selectedId}
+          />
       </section>
       <section>
           <NewComment/>
