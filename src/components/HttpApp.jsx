@@ -10,7 +10,7 @@ const HttpApp = () => {
   const[selectedId,setSelectedId]=useState(null)
   
   useEffect(()=>{
-    axios.get("https://jsonplaceholder.typicode.com/comments").then((response)=>{
+    axios.get("http://localhost:3003/comments").then((response)=>{
       setComments(response.data.slice(0,4))
     }).catch((error)=>{
       console.log(error);
@@ -22,8 +22,8 @@ const HttpApp = () => {
     setSelectedId(id) 
   }
   const deleteCommentHandler=()=>{
-    axios.delete(`https://jsonplaceholder.typicode.com/comments/${selectedId}`)
-    .then((response)=>console.log(response))
+    axios.delete(`http://localhost:3003/comments/${selectedId}`)
+    .then((response)=>console.log(response.data))
     .catch((error)=>console.log(error))
   }
   return (

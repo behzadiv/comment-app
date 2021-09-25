@@ -8,7 +8,7 @@ const FullComment = ({selectedId,deleteHandler}) => {
         if(selectedId)
         {const selectedComment=async()=>{
             try{
-                const {data} = await axios.get(`https://jsonplaceholder.typicode.com/comments/${selectedId}`)
+                const {data} = await axios.get(`http://localhost:3003/comments/${selectedId}`)
                 //console.log(data);
                 setSelectedComponent(data)
             } 
