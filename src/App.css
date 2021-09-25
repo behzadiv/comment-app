@@ -1,3 +1,4 @@
+
 body{
     background-color: aliceblue;
     text-align: center;
@@ -17,7 +18,9 @@ section{
 .commentSection{
     width: 70rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    
+    
 }
 .comment{
     border: 1px solid #ada6a6;
@@ -36,5 +39,27 @@ section{
 .newComment{
     display: flex;
     flex-direction: column;
-   
+    justify-content: center;
+    align-items: center;
+}
+.newComment div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.newComment input ,textarea{
+    margin: 7px 15px;
+    padding: 5px 2px;
+    border: 1px solid #e0e7ff;
+    border-radius: 5px;
+}
+.formBtn{
+    width: 100%;
+    margin: 10px auto;
+    background-color: #4338ca;
+    color: white;
+    padding: 10px 0px;
+    border-radius: 10px;
+    font-size: larger;
 }
