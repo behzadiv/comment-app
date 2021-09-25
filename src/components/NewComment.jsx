@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const NewComment = () => {
+const NewComment = ({addComment}) => {
   const [comment, setComment] = useState({
     name: "",
     email: "",
@@ -16,8 +16,12 @@ const NewComment = () => {
   const submitHandler = (e) => {
     e.preventDefault()
     axios.post("http://localhost:3003/comments",comment)
-    .then((response)=>console.log(response))
-    .catch((error)=>console.log(error))
+    .then((response)=>{
+      console.log(response)
+      addComment(response.data)
+    })
+    .catch((error)=>console.log(error)) 
+    
   } 
   return (
     <div className="newComment">

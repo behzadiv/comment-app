@@ -16,7 +16,7 @@ const HttpApp = () => {
       console.log(error);
     })
     
-  },[])
+  },[comments])
   //console.log(comments);
   const showComment=(id)=>{
     setSelectedId(id) 
@@ -25,6 +25,10 @@ const HttpApp = () => {
     axios.delete(`http://localhost:3003/comments/${selectedId}`)
     .then((response)=>console.log(response.data))
     .catch((error)=>console.log(error))
+  }
+
+  const addComment=(data)=>{
+    setComments([...comments,data])
   }
   return (
     <div>
@@ -47,7 +51,7 @@ const HttpApp = () => {
           />
       </section>
       <section>
-          <NewComment/>
+          <NewComment addComment={addComment}/>
       </section>
     </div>
   );
