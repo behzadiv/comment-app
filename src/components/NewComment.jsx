@@ -9,20 +9,8 @@ const NewComment = () => {
   });
   
   const changeHandler = (e) => {
-    switch (e.target.id) {
-      case "name":
-        setComment({...comment,name:e.target.value})
-        break;
-      case "email":
-        setComment({...comment,email:e.target.value})
-        break;
-      case "body":
-        setComment({...comment,body:e.target.value})
-        break;
-
-      default:
-        break;
-    }
+    //console.log(e.target.id,e.target.value);
+    setComment({...comment,[e.target.id]:e.target.value})
   };
 
   const submitHandler = (e) => {
