@@ -1,8 +1,8 @@
-const Comment = () => {
+const Comment = ({name,email}) => {
     return ( 
         <div className="comment">
-            <h5>name : "behzad"</h5>
-            <p>Email : "saei@gmail.com"</p>
+            <h5>name : {name}</h5>
+            <p>Email : {email}</p>
         </div>
      );
 }

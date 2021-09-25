@@ -9,21 +9,25 @@ const HttpApp = () => {
   const[comments,setComments]=useState(null)
 
   useEffect(()=>{
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((response)=>{
+    axios.get("https://jsonplaceholder.typicode.com/comments").then((response)=>{
       setComments(response.data.slice(0,4))
     }).catch((error)=>{
       console.log(error);
     })
     
   },[])
-  
+  console.log(comments);
   return (
     <div>
       <section className="commentSection">
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments ? comments.map((comment)=>
+          <Comment 
+          key={comment.id}
+          name={comment.name}
+          email={comment.email}
+          body={comment.body}
+          />
+        ): <p>loading....</p>}
       </section>
       <section>
           <FullComment />
