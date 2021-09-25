@@ -36,6 +36,18 @@ section{
     background: #e0e7ff;
     border-radius: 10px;
 }
+.fullcomment button{
+    width: 100px;
+    margin: 0px auto;
+    margin-top: 20px;
+    padding: 5px 8px;
+    background-color: rgb(256, 256, 256);
+    color: red;
+    font-size: larger;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
 .newComment{
     display: flex;
     flex-direction: column;

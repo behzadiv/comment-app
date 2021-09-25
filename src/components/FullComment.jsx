@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const FullComment = ({selectedId}) => {
-    console.log(selectedId);
+const FullComment = ({selectedId,deleteHandler}) => {
+    //console.log(selectedId);
     const[selectedComment,setSelectedComponent]=useState(null)
     useEffect(()=>{
         if(selectedId)
@@ -18,13 +18,14 @@ const FullComment = ({selectedId}) => {
             }
         selectedComment() }
     },[selectedId])
-    console.log(selectedComment);
+    //console.log(selectedComment);
     if(!selectedComment)return <p>No comment selected !</p>
     return ( 
         <div className="fullcomment">
             <h5>{selectedComment.name}</h5>
             <p>{selectedComment.email}</p>
             <p>{selectedComment.body}</p>
+            <button onClick={deleteHandler}>Delete</button>
         </div>
      );
 }

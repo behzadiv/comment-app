@@ -19,10 +19,13 @@ const HttpApp = () => {
   },[])
   //console.log(comments);
   const showComment=(id)=>{
-    setSelectedId(id)
-    
+    setSelectedId(id) 
   }
-
+  const deleteCommentHandler=()=>{
+    axios.delete(`https://jsonplaceholder.typicode.com/comments/${selectedId}`)
+    .then((response)=>console.log(response))
+    .catch((error)=>console.log(error))
+  }
   return (
     <div>
       <section className="commentSection">
@@ -40,6 +43,7 @@ const HttpApp = () => {
       <section>
          <FullComment
             selectedId={selectedId}
+            deleteHandler={deleteCommentHandler}
           />
       </section>
       <section>
