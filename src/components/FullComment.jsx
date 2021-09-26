@@ -15,9 +15,14 @@ const FullComment = ({selectedId,deleteHandler}) => {
             catch(error){
                 console.log(error);
             }  
-            }
+        }
         selectedComment() }
     },[selectedId])
+    
+    const onDeleteHandler =()=>{
+        deleteHandler()
+        setSelectedComponent(null)
+    }
     //console.log(selectedComment);
     if(!selectedComment)return <p>No comment selected !</p>
     return ( 
@@ -25,7 +30,7 @@ const FullComment = ({selectedId,deleteHandler}) => {
             <h5>{selectedComment.name}</h5>
             <p>{selectedComment.email}</p>
             <p>{selectedComment.body}</p>
-            <button onClick={deleteHandler}>Delete</button>
+            <button onClick={onDeleteHandler}>Delete</button>
         </div>
      );
 }

@@ -11,24 +11,29 @@ const HttpApp = () => {
   
   useEffect(()=>{
     axios.get("http://localhost:3003/comments").then((response)=>{
-      setComments(response.data.slice(0,4))
+      setComments(response.data)
     }).catch((error)=>{
       console.log(error);
     })
     
-  },[comments])
+  },[comments ])
   //console.log(comments);
   const showComment=(id)=>{
+   console.log(id);
     setSelectedId(id) 
   }
   const deleteCommentHandler=()=>{
     axios.delete(`http://localhost:3003/comments/${selectedId}`)
-    .then((response)=>console.log(response.data))
+    .then(
+      axios.get("http://localhost:3003/comments")
+      .then((res)=> setComments(res.data))
+    )
     .catch((error)=>console.log(error))
   }
 
   const addComment=(data)=>{
-    setComments([...comments,data])
+    // setComments([...comments,data])
+    axios.get("http://localhost:3003/comments").then((res)=>setComments(res.data))
   }
   return (
     <div>
@@ -39,7 +44,6 @@ const HttpApp = () => {
           key={comment.id}
           name={comment.name}
           email={comment.email}
-          body={comment.body}
           showComment={()=>showComment(comment.id)}
           />
         ): <p>loading....</p>}

@@ -18,8 +18,9 @@ section{
 .commentSection{
     width: 70rem;
     display: flex;
-    justify-content: space-around;
-    
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
     
 }
 .comment{
@@ -27,7 +28,8 @@ section{
     border-radius: 10px;
     padding: 30px 20px;
     cursor: pointer;
-    margin:0px 10px;
+    margin:10px 10px;
+    width: 15rem;
 }
 .fullcomment{
     height: 10rem;

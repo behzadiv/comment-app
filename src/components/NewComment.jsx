@@ -14,10 +14,9 @@ const NewComment = ({addComment}) => {
   };
 
   const submitHandler = (e) => {
-    e.preventDefault()
     axios.post("http://localhost:3003/comments",comment)
     .then((response)=>{
-      console.log(response)
+      console.log(response.data)
       addComment(response.data)
     })
     .catch((error)=>console.log(error)) 
@@ -25,7 +24,7 @@ const NewComment = ({addComment}) => {
   } 
   return (
     <div className="newComment">
-      <form action="" onSubmit={submitHandler}>
+      
         <h1>Add New Comment</h1>
         <div>
           <label>name</label>
@@ -39,8 +38,8 @@ const NewComment = ({addComment}) => {
           <label>body</label>
           <textarea id="body" onChange={changeHandler} required></textarea>
         </div>
-        <button type="submit" className="formBtn">Add New One</button>
-      </form>
+        <button onClick={submitHandler} className="formBtn">Add New One</button>
+      
     </div>
   );
 };
