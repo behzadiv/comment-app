@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <HttpApp/>
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-left" />
     </div>
   );
 }

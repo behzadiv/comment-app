@@ -22,26 +22,37 @@ const HttpApp = () => {
    console.log(id);
     setSelectedId(id) 
   }
-  const deleteCommentHandler=()=>{
-    axios.delete(`http://localhost:3003/comments/${selectedId}`)
-    .then(
-      axios.get("http://localhost:3003/comments")
-      .then((res)=> 
-      {setComments(res.data)
-        toast.warn("your comment deleted")
-      })
-    )
-    .catch((error)=>console.log(error))
+  const deleteCommentHandler=async()=>{
+    try{
+      await axios.delete(`http://localhost:3003/comments/${selectedId}`)
+      const {data}=await axios.get("http://localhost:3003/comments")
+      
+      setComments(data)
+      toast.warn("your comment deleted")
+    }
+    
+    catch{}
   }
 
-  const addComment=(data)=>{
-    // setComments([...comments,data])
-    axios.get("http://localhost:3003/comments")
-    .then((res)=>{
-      setComments(res.data)
+  const submitHandler=async(comment)=>{
+    console.log(comment);
+    try{
+      await axios.post("http://localhost:3003/comments",{...comment,userId:10})
+      const {data} = await axios.get("http://localhost:3003/comments")
+      setComments(data)
       toast.success("Your Comment Added")
-    })
+    }
+    catch{}
   }
+
+  // const addComment=(data)=>{
+  //   // setComments([...comments,data])
+  //   axios.get("http://localhost:3003/comments")
+  //   .then((res)=>{
+  //     setComments(res.data)
+  //     toast.success("Your Comment Added")
+  //   })
+  // }
 
   const renderComments =()=>{
     let renderValue = <p>loading....</p>
@@ -74,7 +85,7 @@ const HttpApp = () => {
           />
       </section>
       <section>
-          <NewComment addComment={addComment}/>
+          <NewComment submitHandler={submitHandler}/>
       </section>
     </div>
   );

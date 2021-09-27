@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const NewComment = ({addComment}) => {
+const NewComment = ({submitHandler}) => {
   const [comment, setComment] = useState({
     name: "",
     email: "",
@@ -13,15 +13,7 @@ const NewComment = ({addComment}) => {
     setComment({...comment,[e.target.id]:e.target.value})
   };
 
-  const submitHandler = (e) => {
-    axios.post("http://localhost:3003/comments",comment)
-    .then((response)=>{
-      console.log(response.data)
-      addComment(response.data)
-    })
-    .catch((error)=>console.log(error)) 
-    
-  } 
+  
   return (
     <div className="newComment">
       
@@ -38,7 +30,7 @@ const NewComment = ({addComment}) => {
           <label>body</label>
           <textarea id="body" onChange={changeHandler} required></textarea>
         </div>
-        <button onClick={submitHandler} className="formBtn">Add New One</button>
+        <button onClick={()=>submitHandler(comment)} className="formBtn">Add New One</button>
       
     </div>
   );
