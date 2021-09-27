@@ -10,7 +10,7 @@ const HttpApp = () => {
   const[selectedId,setSelectedId]=useState(null)
   const[error,setError]=useState(false)
   useEffect(()=>{
-    axios.get("http://localhost:3003/comments").then((response)=>{
+    axios.get("/comments").then((response)=>{
       setComments(response.data)
     }).catch((error)=>{
       setError(true)
@@ -24,8 +24,8 @@ const HttpApp = () => {
   }
   const deleteCommentHandler=async()=>{
     try{
-      await axios.delete(`http://localhost:3003/comments/${selectedId}`)
-      const {data}=await axios.get("http://localhost:3003/comments")
+      await axios.delete(`/comments/${selectedId}`)
+      const {data}=await axios.get("/comments")
       
       setComments(data)
       toast.warn("your comment deleted")
@@ -37,23 +37,13 @@ const HttpApp = () => {
   const submitHandler=async(comment)=>{
     console.log(comment);
     try{
-      await axios.post("http://localhost:3003/comments",{...comment,userId:10})
-      const {data} = await axios.get("http://localhost:3003/comments")
+      await axios.post("/comments",{...comment,userId:10})
+      const {data} = await axios.get("/comments")
       setComments(data)
       toast.success("Your Comment Added")
     }
     catch{}
   }
-
-  // const addComment=(data)=>{
-  //   // setComments([...comments,data])
-  //   axios.get("http://localhost:3003/comments")
-  //   .then((res)=>{
-  //     setComments(res.data)
-  //     toast.success("Your Comment Added")
-  //   })
-  // }
-
   const renderComments =()=>{
     let renderValue = <p>loading....</p>
     if(error){
