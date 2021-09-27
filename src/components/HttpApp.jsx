@@ -4,13 +4,14 @@ import FullComment from "./FullComment";
 import NewComment from "./NewComment";
 import http from "../services/httpServices"
 import { toast } from 'react-toastify';
+import {getAllComments} from "../services/getAllCommentsServices"
 
 const HttpApp = () => {
   const[comments,setComments]=useState(null)
   const[selectedId,setSelectedId]=useState(null)
   const[error,setError]=useState(false)
   useEffect(()=>{
-    http.get("/comments").then((response)=>{
+    getAllComments().then((response)=>{
       setComments(response.data)
     }).catch((error)=>{
       setError(true)
@@ -25,7 +26,7 @@ const HttpApp = () => {
   const deleteCommentHandler=async()=>{
     try{
       await http.delete(`/comments/${selectedId}`)
-      const {data}=await http.get("/comments")
+      const {data}=await getAllComments()
       
       setComments(data)
       toast.warn("your comment deleted")
@@ -34,11 +35,11 @@ const HttpApp = () => {
     catch{}
   }
 
-  const submitHandler=async(comment)=>{
+  const addComment=async(comment)=>{
     console.log(comment);
     try{
       await http.post("/comments",{...comment,userId:10})
-      const {data} = await http.get("/comments")
+      const {data} = await getAllComments()
       setComments(data)
       toast.success("Your Comment Added")
     }
@@ -75,7 +76,7 @@ const HttpApp = () => {
           />
       </section>
       <section>
-          <NewComment submitHandler={submitHandler}/>
+          <NewComment submitHandler={addComment}/>
       </section>
     </div>
   );
