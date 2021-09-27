@@ -1,4 +1,4 @@
-import axios from "axios";
+import http from "../services/httpServices"
 import { useEffect, useState } from "react";
 
 const FullComment = ({selectedId,deleteHandler}) => {
@@ -8,7 +8,7 @@ const FullComment = ({selectedId,deleteHandler}) => {
         if(selectedId)
         {const selectedComment=async()=>{
             try{
-                const {data} = await axios.get(`/comments/${selectedId}`)
+                const {data} = await http.get(`/comments/${selectedId}`)
                 //console.log(data);
                 setSelectedComponent(data)
             } 

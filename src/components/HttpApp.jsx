@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import FullComment from "./FullComment";
 import NewComment from "./NewComment";
-import axios from "axios"
+import http from "../services/httpServices"
 import { toast } from 'react-toastify';
 
 const HttpApp = () => {
@@ -10,7 +10,7 @@ const HttpApp = () => {
   const[selectedId,setSelectedId]=useState(null)
   const[error,setError]=useState(false)
   useEffect(()=>{
-    axios.get("/comments").then((response)=>{
+    http.get("/comments").then((response)=>{
       setComments(response.data)
     }).catch((error)=>{
       setError(true)
@@ -24,8 +24,8 @@ const HttpApp = () => {
   }
   const deleteCommentHandler=async()=>{
     try{
-      await axios.delete(`/comments/${selectedId}`)
-      const {data}=await axios.get("/comments")
+      await http.delete(`/comments/${selectedId}`)
+      const {data}=await http.get("/comments")
       
       setComments(data)
       toast.warn("your comment deleted")
@@ -37,8 +37,8 @@ const HttpApp = () => {
   const submitHandler=async(comment)=>{
     console.log(comment);
     try{
-      await axios.post("/comments",{...comment,userId:10})
-      const {data} = await axios.get("/comments")
+      await http.post("/comments",{...comment,userId:10})
+      const {data} = await http.get("/comments")
       setComments(data)
       toast.success("Your Comment Added")
     }
