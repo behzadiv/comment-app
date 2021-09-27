@@ -3,7 +3,7 @@ import Comment from "./Comment";
 import FullComment from "./FullComment";
 import NewComment from "./NewComment";
 import axios from "axios"
-
+import { toast } from 'react-toastify';
 
 const HttpApp = () => {
   const[comments,setComments]=useState(null)
@@ -26,19 +26,29 @@ const HttpApp = () => {
     axios.delete(`http://localhost:3003/comments/${selectedId}`)
     .then(
       axios.get("http://localhost:3003/comments")
-      .then((res)=> setComments(res.data))
+      .then((res)=> 
+      {setComments(res.data)
+        toast.warn("your comment deleted")
+      })
     )
     .catch((error)=>console.log(error))
   }
 
   const addComment=(data)=>{
     // setComments([...comments,data])
-    axios.get("http://localhost:3003/comments").then((res)=>setComments(res.data))
+    axios.get("http://localhost:3003/comments")
+    .then((res)=>{
+      setComments(res.data)
+      toast.success("Your Comment Added")
+    })
   }
 
   const renderComments =()=>{
     let renderValue = <p>loading....</p>
-    if(error){renderValue= <p>Fetching data failed</p>}
+    if(error){
+      renderValue= <p>Fetching data failed</p>;
+      toast.error("Can not get data!");
+    }
     if(comments && !error){
       renderValue = comments.map((comment)=>
       <Comment 
