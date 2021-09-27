@@ -29,7 +29,7 @@ const FullComment = ({selectedId,deleteHandler}) => {
         <div className="fullcomment">
             <h5>{selectedComment.name}</h5>
             <p>{selectedComment.email}</p>
-            <p>{selectedComment.body}</p>
+            <p style={{color: "black",marginTop:"10px"}}>{selectedComment.body}</p>
             <button onClick={onDeleteHandler}>Delete</button>
         </div>
      );
