@@ -1,5 +1,5 @@
 import http from "./httpService"
 
-export const addNewComment=(comment)=>{
-    return http.post("/comments",{...comment,userId:10})
+export const addNewComment=(data)=>{
+    return http.post("/comments",data)
 }

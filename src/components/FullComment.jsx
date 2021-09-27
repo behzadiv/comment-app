@@ -1,5 +1,6 @@
 import http from "../services/httpService"
 import { useEffect, useState } from "react";
+import {getOneComment} from "../services/getOneComment"
 
 const FullComment = ({selectedId,deleteHandler}) => {
     //console.log(selectedId);
@@ -8,7 +9,7 @@ const FullComment = ({selectedId,deleteHandler}) => {
         if(selectedId)
         {const selectedComment=async()=>{
             try{
-                const {data} = await http.get(`/comments/${selectedId}`)
+                const {data} = await getOneComment(selectedId)
                 //console.log(data);
                 setSelectedComponent(data)
             } 

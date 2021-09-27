@@ -41,7 +41,7 @@ const HttpApp = () => {
   const addComment=async(comment)=>{
     console.log(comment);
     try{
-      await addNewComment(comment)
+      await addNewComment({...comment,userId:10})
       const {data} = await getAllComments()
       setComments(data)
       toast.success("Your Comment Added")
