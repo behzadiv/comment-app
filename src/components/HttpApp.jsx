@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import Comment from "./Comment";
 import FullComment from "./FullComment";
 import NewComment from "./NewComment";
-import http from "../services/httpServices"
+import http from "../services/httpService"
 import { toast } from 'react-toastify';
-import {getAllComments} from "../services/getAllCommentsServices"
+
+import {getAllComments} from "../services/getAllCommentsService"
+import {deleteComment} from "../services/deleteCommentService"
 
 const HttpApp = () => {
   const[comments,setComments]=useState(null)
@@ -25,7 +27,7 @@ const HttpApp = () => {
   }
   const deleteCommentHandler=async()=>{
     try{
-      await http.delete(`/comments/${selectedId}`)
+      await deleteComment(selectedId)
       const {data}=await getAllComments()
       
       setComments(data)

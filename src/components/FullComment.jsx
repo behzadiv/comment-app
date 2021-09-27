@@ -1,4 +1,4 @@
-import http from "../services/httpServices"
+import http from "../services/httpService"
 import { useEffect, useState } from "react";
 
 const FullComment = ({selectedId,deleteHandler}) => {
