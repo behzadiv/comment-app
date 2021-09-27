@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import {getAllComments} from "../services/getAllCommentsService"
 import {deleteComment} from "../services/deleteCommentService"
+import {addNewComment} from "../services/addCommentService"
 
 const HttpApp = () => {
   const[comments,setComments]=useState(null)
@@ -40,7 +41,7 @@ const HttpApp = () => {
   const addComment=async(comment)=>{
     console.log(comment);
     try{
-      await http.post("/comments",{...comment,userId:10})
+      await addNewComment(comment)
       const {data} = await getAllComments()
       setComments(data)
       toast.success("Your Comment Added")
