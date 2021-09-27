@@ -8,12 +8,12 @@ import axios from "axios"
 const HttpApp = () => {
   const[comments,setComments]=useState(null)
   const[selectedId,setSelectedId]=useState(null)
-  
+  const[error,setError]=useState(false)
   useEffect(()=>{
     axios.get("http://localhost:3003/comments").then((response)=>{
       setComments(response.data)
     }).catch((error)=>{
-      console.log(error);
+      setError(true)
     })
     
   },[comments ])
@@ -35,18 +35,27 @@ const HttpApp = () => {
     // setComments([...comments,data])
     axios.get("http://localhost:3003/comments").then((res)=>setComments(res.data))
   }
+
+  const renderComments =()=>{
+    let renderValue = <p>loading....</p>
+    if(error){renderValue= <p>Fetching data failed</p>}
+    if(comments && !error){
+      renderValue = comments.map((comment)=>
+      <Comment 
+      id={comment.id}
+      key={comment.id}
+      name={comment.name}
+      email={comment.email}
+      showComment={()=>showComment(comment.id)}
+      />
+      )}
+    
+    return  renderValue
+  }
   return (
     <div>
       <section className="commentSection">
-        {comments ? comments.map((comment)=>
-          <Comment 
-          id={comment.id}
-          key={comment.id}
-          name={comment.name}
-          email={comment.email}
-          showComment={()=>showComment(comment.id)}
-          />
-        ): <p>loading....</p>}
+        {renderComments()}
       </section>
       <section>
          <FullComment
