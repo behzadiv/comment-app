@@ -24,13 +24,27 @@ section{
     
 }
 .comment{
+    font-family:sans-serif;
+    font-size: 1.1rem;
     border: 1px solid #ada6a6;
+    border-top-width: 3px;
     border-radius: 10px;
     padding: 30px 20px;
     cursor: pointer;
     margin:10px 10px;
-    width: 15rem;
+    width: 18rem;
+    transform: skew(8deg,1deg);
+    transition: all 500ms;
+    overflow:hidden;
 }
+.comment:hover{
+    border: 2px solid orange;
+    box-shadow: 0 5px 20px 0px rgba(0,0,0,.1);
+    transform: skew(1deg,0deg);
+    transform: translateY(-8px);
+}
+
+/* styles of fullComment */
 .fullcomment{
     height: 10rem;
     display: flex;
@@ -39,19 +53,59 @@ section{
     background: #e0e7ff;
     border-radius: 10px;
     padding: 5px 28px;
+    transition: all 1s;
+    
 }
-.fullcomment button{
-    width: 100px;
-    margin: 0px auto;
-    margin-top: 20px;
-    padding: 5px 8px;
-    background-color: rgb(256, 256, 256);
-    color: red;
-    font-size: larger;
-    border-radius: 10px;
-    outline: none;
+.fullcomment:hover .deleteBtn{
+    opacity: 1;
+}
+.fullcomment a {
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+  }
+.deleteBtn{
+    opacity: 0;
+    font-size: 2rem;
+    color: rgba(240, 2, 2, 0.671);
     cursor: pointer;
+    transition: all 900ms;
+    margin: 0px auto;
+    position: relative;
+    z-index: 3;
 }
+.fullcomment:hover a,.deleteBtn{
+    opacity: 1;
+}
+.fullcomment a:hover .deleteBtn{
+    color:#fff;
+    transform: rotateY(360deg);
+}
+.fullcomment a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:red;
+    transition: .5s;
+    z-index: 2;
+  }
+  .fullcomment a:hover:before{
+      top: -1px;
+      color: #fff;
+  }
+/* End styles of fullComment */
 .newComment{
     display: flex;
     flex-direction: column;
@@ -71,13 +125,18 @@ section{
     border-radius: 5px;
 }
 .formBtn{
-    width: 50%;
+    width: 45%;
     margin: 10px auto;
-    background-color: #4338ca;
+    background-color: #766bf7;
     color: white;
     padding: 10px 0px;
     border-radius: 10px;
     font-size: larger;
+    transition: all 1s;
+    cursor: pointer;
+}
+.formBtn:hover{
+    background-color: #473ad4;
 }
 
 @media  screen and (max-width: 1200px) {

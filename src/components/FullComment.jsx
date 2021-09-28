@@ -1,6 +1,8 @@
 import http from "../services/httpService"
 import { useEffect, useState } from "react";
 import {getOneComment} from "../services/getOneComment"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const FullComment = ({selectedId,deleteHandler}) => {
     //console.log(selectedId);
@@ -31,7 +33,7 @@ const FullComment = ({selectedId,deleteHandler}) => {
             <h5>{selectedComment.name}</h5>
             <p>{selectedComment.email}</p>
             <p style={{color: "black",marginTop:"10px"}}>{selectedComment.body}</p>
-            <button onClick={onDeleteHandler}>Delete</button>
+            <a><FontAwesomeIcon icon="times" onClick={onDeleteHandler} className="deleteBtn"/></a>
         </div>
      );
 }
