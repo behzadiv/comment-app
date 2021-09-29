@@ -3,14 +3,109 @@ body{
     background-color: aliceblue;
     text-align: center;
     width: 70rem;
-    margin: 20px auto;
+    margin: 10px auto;
+    font-family:sans-serif;
+}
+/*style of navbar*/
+.arrowRight{
+    opacity: 0;
+}
+.navbar{
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 0px auto;
+    background-color: white;
+    height: 7vh;
+    align-items: center;
+    color: red;
+    font-size: x-large;
+    padding: 20px 0px;
 }
 
+#message{
+    position: relative;
+}
+#message span{
+    position: absolute;
+    top: -14px;
+    left: 16px;
+    color: red;
+    font-size: 1.2rem; 
+}
+.navbar li{
+    transition: all 800ms;
+}
+.navbar li:hover{
+    transform: translateY(-1px);
+    
+}
+.navbar #exit{
+    position: relative;
+}
+.navbar #exit::before{
+    position: absolute;
+    opacity: 0;
+    content: "exit";
+    top: -3px;
+    left: -20px;
+    transition: all 500ms;
+}
+.navbar #exit:hover::before{
+    content: "exit";
+    top: -20px;
+    left: 25px;
+    padding: 2px 8px;
+    border: 1px solid #fff;
+    border-radius: 8px 10px 10px 0px;
+    background-color: red;
+    color: white;
+    opacity: 1;
+}
+.navbar #profile::before{
+    position: absolute;
+    opacity: 0;
+    content: "profile";
+    top: -3px;
+    left: -10px;
+    transition: all 500ms;
+}
+.navbar #profile:hover::before{
+    content: "Profile";
+    top: -20px;
+    left: 25px;
+    padding: 2px 8px;
+    border: 1px solid #fff;
+    border-radius: 8px 10px 10px 0px;
+    background-color: rgb(36, 80, 145);
+    color: white;
+    opacity: 1;
+}
+.navbar #home::before{
+    position: absolute;
+    opacity: 0;
+    content: "Home";
+    top: -3px;
+    left: -10px;
+    transition: all 500ms;
+}
+.navbar #home:hover::before{
+    content: "Home";
+    top: -20px;
+    left: 25px;
+    padding: 2px 8px;
+    border: 1px solid #fff;
+    border-radius: 8px 10px 10px 0px;
+    background-color: rgb(97, 93, 59);
+    color: white;
+    opacity: 1;
+}
+/*end style of navbar*/
 section{
     width: 45rem;
-    margin: 10px auto;
+    margin: 0px auto;
     padding: 30px 10px;
-    background: #e0e7ff;
     border-radius: 10px;
     color: #4338ca;
     text-align: center;
@@ -33,19 +128,23 @@ section{
     cursor: pointer;
     margin:10px 10px;
     width: 18rem;
-    transform: skew(8deg,1deg);
+    transform: skew(5deg,1deg);
     transition: all 500ms;
     overflow:hidden;
+    color: rgb(112, 102, 102);
 }
 .comment:hover{
     border: 2px solid orange;
     box-shadow: 0 5px 20px 0px rgba(0,0,0,.1);
+    background: linear-gradient(#a1c4fd,#c2e9fb);
     transform: skew(1deg,0deg);
     transform: translateY(-8px);
+    
 }
 
 /* styles of fullComment */
 .fullcomment{
+    background: #e0e7ff;
     height: 10rem;
     display: flex;
     flex-direction: column;
@@ -70,7 +169,7 @@ section{
     border-radius: 50%;
     position: relative;
     overflow: hidden;
-    border: 3px solid #fff;
+    border: 4px solid #fff;
     z-index: 1;
   }
 .deleteBtn{
@@ -106,11 +205,24 @@ section{
       color: #fff;
   }
 /* End styles of fullComment */
+
+/*styles of newComment*/
 .newComment{
+    background: linear-gradient(#cbd2e7,#4a63ac);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    padding: 20px 0;
+    transition: all 1s;
+}
+.newComment h1{
+    margin-bottom: 20px;
+    color: rgb(236, 252, 19);
+}
+.newComment:hover form{
+    transform: translateY(-10px);
 }
 .newComment div{
     display: flex;
@@ -119,38 +231,125 @@ section{
 }
 
 .newComment input ,textarea{
+    width: 100%;
     margin: 7px 15px;
-    padding: 5px 2px;
-    border: 1px solid #e0e7ff;
+    padding: 7px 8px;
+    border: 1px solid #0033ec;
     border-radius: 5px;
+    font-size: .8rem;
+    outline: none;
+}
+.newComment input:focus{
+    border: 2px solid #2f469c;
+}
+.newComment textarea:focus{
+    border: 2px solid #2f469c;
 }
 .formBtn{
-    width: 45%;
-    margin: 10px auto;
-    background-color: #766bf7;
-    color: white;
+    opacity: 1;
+    width: 80%;
+    margin: 5px auto;
+    background-color: #6969b9;
+    color: rgb(247, 244, 250);
     padding: 10px 0px;
-    border-radius: 10px;
+    border: none;
     font-size: larger;
     transition: all 1s;
     cursor: pointer;
+    
 }
 .formBtn:hover{
-    background-color: #473ad4;
+    background-color: #6a6a6e;
+    color: white;
 }
+
+.newComment button {
+    position: relative;
+    display: block;
+    height: 50px;
+}
+.newComment button > span:after{
+    content:"";
+    position: absolute;
+    width: 40px;
+    height: 0;
+    top:0px;
+    left: 40%;
+    border: 1px solid white;
+	border-left: none;
+	border-bottom: none;
+	transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
+}
+.newComment:hover button > span:after{
+    width: calc(60% - 1px);
+	height: calc(100% - 2px);
+	transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;}
+
+.newComment button > span:before{
+        content:"";
+        position: absolute;
+        width: 0px;
+        height: 0;
+        top:0px;
+        right: 40%;
+        border: 1px solid white;
+        border-right: none;
+        border-bottom: none;
+        transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
+    }
+    .newComment:hover button > span:before{
+        width: calc(60% - 1px);
+        height: calc(100% - 2px);
+        transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
+    }
+    .newComment button > span > span:after{
+        content:"";
+        position: absolute;
+        width: 0px;
+        height: 1px;
+        bottom:0px;
+        left: 0%;
+        opacity: o;
+        transition: opacity 0s ease-out .29s, width .15s ease-out .3s;
+    }
+    .newComment:hover button > span > span:after{
+        opacity: 1;
+        border-bottom: 1px solid white;
+        width: calc(50%);
+        height: 1px;
+    }
+    .newComment button > span > span::before{
+        content:"";
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        bottom:0px;
+        right: 0%;
+        opacity: 0;
+        transition: opacity 0s ease-out .29s, width .15s ease-out .3s;
+    }
+    .newComment:hover button > span > span:before{
+        opacity: 1;
+        border-bottom: 1px solid white;
+        width: calc(50%);
+        height: 1px;
+    }
+    .newComment:hover button > span > span > span{
+        opacity: ;
+    }
+    /* End styles of newComment*/
 
 @media  screen and (max-width: 1200px) {
     body{
         background-color: aliceblue;
         text-align: center;
         width:100%;
-        margin: 20px auto;
+        margin: 10px auto;
     }
     section{
         max-width: 40rem;
         margin: 10px auto;
         padding: 30px 10px;
-        background: #e0e7ff;
         border-radius: 10px;
         color: #4338ca;
         text-align: center;
@@ -169,7 +368,72 @@ section{
         background-color: aliceblue;
         text-align: center;
         width:100%;
-        margin: 20px auto;
+        margin: 10px auto;
+        position: relative;
+
+    }
+    .arrowRight{
+        opacity: 1;
+        position: absolute;
+        position: fixed;
+        top: 100px;
+        left:-10px;
+        font-size: xx-large;
+        transition: all 1s;
+        cursor: pointer;
+        transform: rotateX(0deg);
+        transition: all 1s;
+        color: blueviolet;
+    }
+    .arrowRightClicked{
+        transform: rotateZ(180deg);
+        position: absolute;
+        position: fixed;
+        top: 0px;
+        left:.8rem;
+        font-size: xx-large;
+        transition: all .8s;
+        color: red;
+    }
+    
+    .sidbarShow{
+        position: absolute;
+        position: fixed;
+        top:40px;
+        left: -10px;
+        list-style: none;
+        display: flex;
+        width: 4rem;
+        flex-direction: column;
+        margin: 0px auto;
+        background-color: white;
+        height: 35vh;
+        opacity: 1;
+        justify-content: space-evenly;
+        transition: all 1.7s;
+        font-size: x-large;
+        border-radius: 0 40px 40px 0;
+    }
+    .sidbarShow:hover{
+        color: red;
+    }
+    .sidbarhidden{
+        position: absolute;
+        position: fixed;
+        top:40px;
+        left:-100px;
+        list-style: none;
+        display: flex;
+        width: 12%;
+        flex-direction: column;
+        margin: 0px auto;
+        background-color: white;
+        height: 35vh;
+        opacity: 1;
+        justify-content: space-evenly;
+        transition: all .5s;
+        font-size:large;
+        
     }
     .commentSection{
         width: 80%;
@@ -182,6 +446,7 @@ section{
     .comment{
         border: 1px solid #ada6a6;
         border-radius: 10px;
+        border-top-width: 3px;
         padding: 30px 20px;
         cursor: pointer;
         margin:10px 10px;
@@ -191,7 +456,6 @@ section{
         width: 80%;
         margin: 10px auto;
         padding: 30px 10px;
-        background: #e0e7ff;
         border-radius: 10px;
         color: #4338ca;
         text-align: center;

@@ -4,13 +4,14 @@ import FullComment from "./FullComment";
 import NewComment from "./NewComment";
 import http from "../services/httpService"
 import { toast } from 'react-toastify';
-
+import Navbar from "./Navbar"
 import {getAllComments} from "../services/getAllCommentsService"
 import {deleteComment} from "../services/deleteCommentService"
 import {addNewComment} from "../services/addCommentService"
 
+
 const HttpApp = () => {
-  const[comments,setComments]=useState(null)
+  const[comments,setComments]=useState(0)
   const[selectedId,setSelectedId]=useState(null)
   const[error,setError]=useState(false)
   useEffect(()=>{
@@ -69,6 +70,7 @@ const HttpApp = () => {
   }
   return (
     <div>
+        <Navbar comments={comments}/>
       <section className="commentSection">
         {renderComments()}
       </section>
@@ -76,10 +78,10 @@ const HttpApp = () => {
          <FullComment
             selectedId={selectedId}
             deleteHandler={deleteCommentHandler}
-          />
+            />
       </section>
       <section>
-          <NewComment submitHandler={addComment}/>
+          <NewComment onAddComment={addComment}/>
       </section>
     </div>
   );

@@ -8,20 +8,6 @@
       "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
     },
     {
-      "postId": 1,
-      "id": 3,
-      "name": "odio adipisci rerum aut animi",
-      "email": "Nikita@garfield.biz",
-      "body": "quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione"
-    },
-    {
-      "name": "begzaf",
-      "email": "saiedibehzad67@gmail.com",
-      "body": "tast",
-      "userId": 10,
-      "id": 4
-    },
-    {
       "name": "behzad",
       "email": "behzad@gmail.com",
       "body": "test 3",
@@ -29,16 +15,16 @@
       "id": 5
     },
     {
-      "name": "begzaf",
-      "email": "saiedibehzad67@gmail.com",
-      "body": "",
+      "name": "behzad",
+      "email": "beh@yahoo.com",
+      "body": "c",
       "userId": 10,
       "id": 6
     },
     {
-      "name": "begzaf",
-      "email": "saiedibehzad67@gmail.comwwwwwwwwwwwwwwwwwww",
-      "body": "",
+      "name": "behzad",
+      "email": "behzad@gmail.com",
+      "body": "test test \n",
       "userId": 10,
       "id": 7
     }
