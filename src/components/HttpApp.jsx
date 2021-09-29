@@ -63,6 +63,7 @@ const HttpApp = () => {
       name={comment.name}
       email={comment.email}
       showComment={()=>showComment(comment.id)}
+      
       />
       )}
     

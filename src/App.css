@@ -132,10 +132,12 @@ section{
     transition: all 500ms;
     overflow:hidden;
     color: rgb(112, 102, 102);
+    
 }
+
 .comment:hover{
-    border: 2px solid orange;
-    box-shadow: 0 5px 20px 0px rgba(0,0,0,.1);
+    border: 3px solid orange;
+    box-shadow: 0 5px 40px 10px rgba(0,0,0,.1);
     background: linear-gradient(#a1c4fd,#c2e9fb);
     transform: skew(1deg,0deg);
     transform: translateY(-8px);
@@ -233,7 +235,7 @@ section{
 .newComment input ,textarea{
     width: 100%;
     margin: 7px 15px;
-    padding: 7px 8px;
+    padding: 9px 8px;
     border: 1px solid #0033ec;
     border-radius: 5px;
     font-size: .8rem;
@@ -251,7 +253,7 @@ section{
     margin: 5px auto;
     background-color: #6969b9;
     color: rgb(247, 244, 250);
-    padding: 10px 0px;
+    padding: 8px 0px;
     border: none;
     font-size: larger;
     transition: all 1s;
@@ -271,7 +273,7 @@ section{
 .newComment button > span:after{
     content:"";
     position: absolute;
-    width: 40px;
+    width: 31px;
     height: 0;
     top:0px;
     left: 40%;
@@ -280,7 +282,7 @@ section{
 	border-bottom: none;
 	transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
 }
-.newComment:hover button > span:after{
+.newComment button:hover > span:after{
     width: calc(60% - 1px);
 	height: calc(100% - 2px);
 	transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;}
@@ -297,7 +299,7 @@ section{
         border-bottom: none;
         transition: height 0.15s ease-out, width 0.15s ease-out 0.15s;
     }
-    .newComment:hover button > span:before{
+    .newComment button:hover > span:before{
         width: calc(60% - 1px);
         height: calc(100% - 2px);
         transition: width 0.15s ease-out, height 0.15s ease-out 0.15s;
@@ -312,7 +314,7 @@ section{
         opacity: o;
         transition: opacity 0s ease-out .29s, width .15s ease-out .3s;
     }
-    .newComment:hover button > span > span:after{
+    .newComment button:hover > span > span:after{
         opacity: 1;
         border-bottom: 1px solid white;
         width: calc(50%);
@@ -328,15 +330,13 @@ section{
         opacity: 0;
         transition: opacity 0s ease-out .29s, width .15s ease-out .3s;
     }
-    .newComment:hover button > span > span:before{
+    .newComment button:hover > span > span:before{
         opacity: 1;
         border-bottom: 1px solid white;
         width: calc(50%);
         height: 1px;
     }
-    .newComment:hover button > span > span > span{
-        opacity: ;
-    }
+    
     /* End styles of newComment*/
 
 @media  screen and (max-width: 1200px) {
@@ -412,7 +412,7 @@ section{
         justify-content: space-evenly;
         transition: all 1.7s;
         font-size: x-large;
-        border-radius: 0 40px 40px 0;
+        border-radius: 0 10px 40px 0;
     }
     .sidbarShow:hover{
         color: red;
@@ -450,8 +450,9 @@ section{
         padding: 30px 20px;
         cursor: pointer;
         margin:10px 10px;
-        width: 80%;
+        width: 70%;
     }
+    
     section{
         width: 80%;
         margin: 10px auto;
